@@ -1,5 +1,11 @@
+import { Nav } from '../components/Nav';
+
 const ChartPage = () => {
-  return <></>;
+  return (
+    <>
+      <Nav />
+    </>
+  );
 };
 
 export default ChartPage;

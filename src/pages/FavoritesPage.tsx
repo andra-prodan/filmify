@@ -1,5 +1,11 @@
+import { Nav } from '../components/Nav';
+
 const FavoritesPage = () => {
-  return <></>;
+  return (
+    <>
+      <Nav />
+    </>
+  );
 };
 
 export default FavoritesPage;
