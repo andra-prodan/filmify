@@ -1,15 +1,30 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
+import { useAuth } from '../hooks/useAuth';
+import { useAppDispatch } from '../store';
+import { logout } from '../store/actions/authActions';
 import { NavLink } from './NavLink';
 import { NavLinkMobile } from './NavLinkMobile';
 
-export const Nav = ({ isAuthenticated = true }: { isAuthenticated?: boolean }) => {
+export const Nav = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+
+  const isAuthenticated = useAuth();
+  const dispatch = useAppDispatch();
+
+  const handleLogout = async () => {
+    await dispatch(logout());
+    navigate(0);
+  };
 
   return (
     <header className="bg-gray-900 text-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <h1 className="text-3xl font-bold tracking-wider">Filmify</h1>
+        <h1 className="text-3xl font-bold tracking-wider cursor-pointer" onClick={() => navigate('/')}>
+          Filmify
+        </h1>
         <div className="flex items-center">
           <nav className="hidden md:flex space-x-4">
             <NavLink to="/" label="Top 20" />
@@ -17,7 +32,9 @@ export const Nav = ({ isAuthenticated = true }: { isAuthenticated?: boolean }) =
             {isAuthenticated ? (
               <>
                 <NavLink to="/favorites" label="Favorites" />
-                <NavLink to="/logout" label="Log out" />
+                <button className="text-white hover:text-gray-200 transition duration-300" onClick={handleLogout}>
+                  Log out
+                </button>
               </>
             ) : (
               <NavLink to="/login" label="Log in" />
@@ -48,7 +65,9 @@ export const Nav = ({ isAuthenticated = true }: { isAuthenticated?: boolean }) =
             {isAuthenticated ? (
               <>
                 <NavLinkMobile to="/favorites" label="Favorites" />
-                <NavLinkMobile to="/logout" label="Log out" />
+                <button className="block px-4 py-2 text-white hover:bg-gray-700" onClick={handleLogout}>
+                  Log out
+                </button>
               </>
             ) : (
               <NavLinkMobile to="/login" label="Log in" />
