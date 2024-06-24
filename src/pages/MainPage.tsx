@@ -1,7 +1,7 @@
 const MainPage = () => {
   return (
     <>
-      <p>heii</p>
+      <p className="p-6">heii</p>
     </>
   );
 };

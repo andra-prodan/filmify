@@ -1,5 +1,4 @@
 const ChartPage = () => {
-  const user = '';
   return <></>;
 };
 
