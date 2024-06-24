@@ -27,6 +27,7 @@ export const login = (username: string, password: string) => {
 export const logout = () => {
   return (dispatch: AppDispatch) => {
     localStorage.removeItem('user');
+    localStorage.removeItem('starredMovies');
 
     dispatch({ type: LOGOUT });
   };
