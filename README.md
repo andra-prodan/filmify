@@ -58,10 +58,35 @@ npm install
 ### Run the application:
 
 ```bash
-npm start
+npm run start
 ```
 
 Open http://localhost:3000 to view Filmify in your browser.
+
+## MyAPIFilms API Integration
+
+To integrate the token from [MyAPIFilms](https://www.myapifilms.com/token.do) into your application, follow these steps:
+
+### Obtain the API Token
+
+Visit [MyAPIFilms](https://www.myapifilms.com/token.do) to generate your API token.
+
+### Add the Token to `.env.local`
+
+1. In the root directory of your project, create a file named `.env.local` if it doesn't already exist.
+2. Open the `.env.local` file and add the following line, replacing `YOUR_API_TOKEN` with the token you obtained in the previous step:
+
+    ```plaintext
+    REACT_APP_FILMS_API_TOKEN=YOUR_API_TOKEN
+    ```
+
+#### Example
+
+Here is an example of what the `.env.local` file should look like:
+
+```plaintext
+REACT_APP_FILMS_API_TOKEN=abcdef123456
+```
 
 ## Test Login Credentials
 
