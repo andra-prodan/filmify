@@ -1,20 +1,20 @@
-import pluginJs from '@eslint/js';
-import pluginReactConfig from 'eslint-plugin-react/configs/recommended.js';
+import { configs as pluginJsConfigs } from '@eslint/eslintrc/dist/configs/recommended';
+import { configs as pluginReactConfigs } from 'eslint-plugin-react/dist/configs/recommended';
 import globals from 'globals';
-import tseslint from 'typescript-eslint';
+import typescriptEslintConfigs from 'typescript-eslint/dist/configs/recommended';
 
-export default [
-  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
-  { languageOptions: { parserOptions: { ecmaFeatures: { jsx: true } } } },
-  { languageOptions: { globals: globals.browser } },
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  pluginReactConfig,
-  {
-    rules: {
-      'react/react-in-jsx-scope': 'off',
-      'react/jsx-uses-react': 'off',
-      'newline-before-return': 'error',
+export default {
+  files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     },
   },
-];
+  globals: globals.browser,
+  extends: [pluginJsConfigs.recommended, typescriptEslintConfigs.recommended, pluginReactConfigs.recommended],
+  rules: {
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-uses-react': 'off',
+    'newline-before-return': 'error',
+  },
+};

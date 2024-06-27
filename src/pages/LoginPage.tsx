@@ -23,7 +23,7 @@ const LoginPage = () => {
         await dispatch(login(values.username, values.password));
         navigate('/');
       } catch (error) {
-        console.error('Login failed:', error);
+        console.log('Login failed:', error);
       }
     },
   });
